@@ -5,7 +5,8 @@
   padding: var(--dp-action-row-padding);
   box-sizing: border-box;
   color: var(--dp-text-color);
-  flex-flow: row nowrap;
+  flex-flow: row nowrap;;
+  padding: 15px 10px 10px 10px;
 
   svg {
     height: var(--dp-button-icon-height);

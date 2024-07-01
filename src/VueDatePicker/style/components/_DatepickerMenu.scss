@@ -7,6 +7,7 @@
   user-select: none;
   border: 1px solid var(--dp-menu-border-color);
   box-sizing: border-box;
+  border-radius: 8px;
 
   &::after {
     box-sizing: border-box;
@@ -28,7 +29,8 @@
 }
 
 .dp__menu_inner {
-  padding: var(--dp-menu-padding);
+  padding: 10px;
+
 }
 
 .dp--menu--inner-stretched  {

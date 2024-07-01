@@ -16,8 +16,8 @@
                 <span class="dp--menu-loader"></span>
             </div>
         </div>
-        <div v-if="!defaultedInline.enabled && !teleportCenter" :class="arrowClass"></div>
-        <div
+        <!-- <div v-if="!defaultedInline.enabled && !teleportCenter" :class="arrowClass"></div> -->
+        <div 
             ref="innerMenuRef"
             :class="{
                 dp__menu_content_wrapper: presetDates?.length || !!$slots['left-sidebar'] || !!$slots['right-sidebar'],
@@ -26,7 +26,7 @@
             }"
             :style="{ '--dp-menu-width': `${calendarWidth}px` }"
         >
-            <div v-if="$slots['left-sidebar']" class="dp__sidebar_left">
+            <div  v-if="$slots['left-sidebar']" class="dp__sidebar_left">
                 <slot name="left-sidebar" v-bind="getSidebarProps" />
             </div>
             <div
@@ -98,6 +98,7 @@
                 <slot v-if="$slots['action-extra']" name="action-extra" :select-current-date="selectCurrentDate" />
             </div>
         </div>
+        <div class="dp__calendar_header_separator"></div>
         <ActionRow
             v-if="!autoApply || defaultedConfig.keepActionRow"
             :menu-mount="menuMount"

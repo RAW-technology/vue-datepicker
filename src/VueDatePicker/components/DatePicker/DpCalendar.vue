@@ -24,7 +24,6 @@
                     </template>
                 </div>
             </div>
-            <div class="dp__calendar_header_separator"></div>
             <transition :name="transitionName" :css="!!transitions">
                 <div
                     v-if="showCalendar"
@@ -124,7 +123,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { computed, nextTick, onMounted, ref } from 'vue';
+    import { computed, nextTick, onMounted, ref, inject } from 'vue';
     import { getISOWeek, getWeek } from 'date-fns';
 
     import { checkKeyDown, checkStopPropagation, getDayNames, getDefaultMarker, unrefElement } from '@/utils/util';
@@ -150,6 +149,7 @@
 
     const emit = defineEmits([
         'select-date',
+        'date-selected',
         'set-hover-date',
         'handle-scroll',
         'mount',
@@ -376,11 +376,16 @@
         return getWeekNumber(firstCurrentDate);
     };
 
+    const handleDateSelected = inject('handleDateSelected');
+
     const onDateSelect = (ev: Event, dayVal: ICalendarDay) => {
         if (!defaultedMultiDates.value.enabled) {
             checkStopPropagation(ev, defaultedConfig.value);
+            // console.log('Date selected:', dayVal.value);
+            emit('date-selected', dayVal.value)
             emit('select-date', dayVal);
         }
+        handleDateSelected?.(dayVal.value);
     };
 
     const onTpClick = (ev: Event) => {

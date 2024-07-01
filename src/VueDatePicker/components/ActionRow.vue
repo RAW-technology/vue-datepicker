@@ -1,6 +1,6 @@
 <template>
-    <div ref="actionRowRef" class="dp__action_row">
-        <template v-if="$slots['action-row']">
+    <div  ref="actionRowRef" class="dp__action_row">
+        <template v-if="$slots['action-row']" >
             <slot
                 name="action-row"
                 v-bind="{
@@ -12,7 +12,8 @@
             />
         </template>
         <template v-else>
-            <div
+            <div style="width:100%">
+                <div
                 v-if="defaultedActionRow.showPreview"
                 class="dp__selection_preview"
                 :title="formatValue"
@@ -23,45 +24,52 @@
                     name="action-preview"
                     :value="internalModelValue"
                 />
-                <template v-if="!$slots['action-preview'] && showPreview">
-                    {{ formatValue }}
-                </template>
             </div>
             <div ref="actionBtnContainer" class="dp__action_buttons" data-dp-element="action-row">
                 <slot v-if="$slots['action-buttons']" name="action-buttons" :value="internalModelValue" />
                 <template v-if="!$slots['action-buttons']">
+                   <div style="width:100%; display:flex; justify-content:space-between;">
                     <button
-                        v-if="!defaultedInline.enabled && defaultedActionRow.showCancel"
-                        ref="cancelButtonRef"
-                        type="button"
-                        class="dp__action_button dp__action_cancel"
-                        @click="$emit('close-picker')"
-                        @keydown="checkKeyDown($event, () => $emit('close-picker'))"
-                    >
-                        {{ cancelText }}
-                    </button>
-                    <button
-                        v-if="defaultedActionRow.showNow"
-                        type="button"
-                        class="dp__action_button dp__action_cancel"
-                        @click="$emit('select-now')"
-                        @keydown="checkKeyDown($event, () => $emit('select-now'))"
-                    >
-                        {{ nowButtonLabel }}
-                    </button>
-                    <button
-                        v-if="defaultedActionRow.showSelect"
-                        ref="selectButtonRef"
-                        type="button"
-                        class="dp__action_button dp__action_select"
-                        :disabled="disabled"
-                        data-test="select-button"
-                        @keydown="checkKeyDown($event, () => selectDate())"
-                        @click="selectDate"
-                    >
-                        {{ selectText }}
-                    </button>
+                    v-if="!defaultedInline.enabled && defaultedActionRow.showCancel"
+                    ref="cancelButtonRef"
+                    type="button"
+                    class="dp__action_button dp__action_cancel"
+                    @click="$emit('close-picker')"
+                    @keydown="checkKeyDown($event, () => $emit('close-picker'))"
+                    style="display: flex; 
+                    justify-content:center; 
+                    width: 45%;
+                    height: 40px;
+                    border-radius: 10px;
+                    font-size: 14px;"
+                    
+                >
+                    {{ cancelText }}
+                </button>
+                <button
+                    v-if="defaultedActionRow.showSelect"
+                    ref="selectButtonRef"
+                    type="button"
+                    class="dp__action_button dp__action_select"
+                    :disabled="disabled"
+                    data-test="select-button"
+                    @keydown="checkKeyDown($event, () => selectDate())"
+                    @click="selectDate"
+                    style="display: flex; 
+                    justify-content:center; 
+                    background-color:black; 
+                    width: 45%;
+                    height: 40px;
+                    border-radius: 10px;
+                    font-size: 14px;
+                    "
+                    
+                >
+                    {{ selectText }}
+                </button>
+                   </div>
                 </template>
+            </div>
             </div>
         </template>
     </div>

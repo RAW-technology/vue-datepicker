@@ -12,7 +12,8 @@
             <div v-if="$slots['top-extra']">
                 <slot name="top-extra" :value="internalModelValue" />
             </div>
-            <div class="dp__month_year_wrap">
+            <div class="dp__month_year_wrap" >
+                <!-- THIS IS THE LOCATION FOR THE LEFT ARROW  -->
                 <ArrowBtn
                     v-if="showLeftIcon(defaultedMultiCalendars, instance) && !vertical"
                     :aria-label="defaultedAriaLabels?.prevMonth"
@@ -24,14 +25,16 @@
                     <slot v-if="$slots['arrow-left']" name="arrow-left" />
                     <ChevronLeftIcon v-if="!$slots['arrow-left']" />
                 </ArrowBtn>
+                <!-- LEFT ARROW ENDS HERE -->
                 <div
+
                     class="dp__month_year_wrap"
                     :class="{
                         dp__year_disable_select: disableYearSelect,
                     }"
                 >
                     <template v-for="(type, i) in selectionButtonsDisplay" :key="type.type">
-                        <button
+                        <div
                             :ref="(el) => setElRefs(el, i + 1)"
                             type="button"
                             class="dp__btn dp__month_year_select"
@@ -47,8 +50,8 @@
                                 :text="type.text"
                                 :value="props[type.type]"
                             />
-                            <template v-if="!$slots[type.type]">{{ type.text }}</template>
-                        </button>
+                            <template v-if="!$slots[type.type]">{{ type.text }}<span v-if="i === 0">,</span></template>
+                        </div>
                         <transition :name="transitionName(type.showSelectionGrid)" :css="showTransition">
                             <SelectionOverlay
                                 v-if="type.showSelectionGrid"
@@ -84,6 +87,7 @@
                         </transition>
                     </template>
                 </div>
+                <!-- ?? NOT SURE WHAT THIS DOES  -->
                 <ArrowBtn
                     v-if="showLeftIcon(defaultedMultiCalendars, instance) && vertical"
                     :aria-label="defaultedAriaLabels?.prevMonth"
@@ -94,6 +98,8 @@
                     <slot v-if="$slots['arrow-up']" name="arrow-up" />
                     <ChevronUpIcon v-if="!$slots['arrow-up']" />
                 </ArrowBtn>
+                <!-- ?? ENDS HERE  -->
+                <!-- THIS IS THE LOCATION OF THE RIGHT ARROW  -->
                 <ArrowBtn
                     v-if="showRightIcon(defaultedMultiCalendars, instance)"
                     ref="rightIcon"
@@ -112,6 +118,7 @@
                         v-if="!$slots[vertical ? 'arrow-down' : 'arrow-right']"
                     />
                 </ArrowBtn>
+                <!-- THIS IS THE END OF THE RIGHT ARROW  -->
             </div>
         </template>
     </div>

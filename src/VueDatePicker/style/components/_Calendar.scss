@@ -15,6 +15,9 @@
   padding: var(--dp-cell-padding);
   width: var(--dp-cell-size);
   box-sizing: border-box;
+  color: #868C98;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .dp__calendar_row {
@@ -29,6 +32,8 @@
   flex-grow: 1;
   box-sizing: border-box;
   color: var(--dp-text-color);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .dp__calendar {
@@ -69,7 +74,7 @@
 }
 
 %__dp_active {
-  background: var(--dp-primary-color);
+  background: black;
   color: var(--dp-primary-text-color);
 }
 
@@ -142,7 +147,8 @@
 }
 
 .dp__today {
-  border: 1px solid var(--dp-primary-color);
+  border:1px solid black;
+  border-radius: 8px;
 }
 
 .dp__week_num {

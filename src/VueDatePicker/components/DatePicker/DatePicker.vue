@@ -97,6 +97,7 @@
     import { endOfWeek, getMonth, startOfWeek } from 'date-fns';
     import { getCellId } from '@/utils/date-utils';
 
+
     const emit = defineEmits([
         'tooltip-open',
         'tooltip-close',
@@ -121,6 +122,7 @@
         'invalid-date',
         'overlay-toggle',
     ]);
+    
     const props = defineProps({
         ...PickerBaseProps,
     });

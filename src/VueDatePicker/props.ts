@@ -114,7 +114,7 @@ export const AllProps = {
     customProps: { type: Object as PropType<Record<string, unknown>>, default: null },
     yearPicker: { type: Boolean as PropType<boolean>, default: false },
     modelAuto: { type: Boolean as PropType<boolean>, default: false },
-    selectText: { type: String as PropType<string>, default: 'Select' },
+    selectText: { type: String as PropType<string>, default: 'Set' },
     cancelText: { type: String as PropType<string>, default: 'Cancel' },
     previewFormat: {
         type: [String, Function] as PropType<IFormat>,
