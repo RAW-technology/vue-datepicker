@@ -1,6 +1,6 @@
 {
   "name": "raw-custom-calendar",
-  "version": "8.8.0",
+  "version": "8.8.1",
   "description": "Datepicker component for Vue 3",
   "author": "Vuepic",
   "private": false,
