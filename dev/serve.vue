@@ -9,13 +9,7 @@ import { ref, watch, provide } from 'vue';
 import Datepicker from '../src/VueDatePicker/VueDatePicker.vue';
 
 
-const selectedDate = ref<Date | [Date, Date] | null>(null);
-    const handleDateSelected = (date) => {
-  // Handle the received date here
-  console.log('Date selected:', date);
-};
-
-provide('handleDateSelected', handleDateSelected);
+const selectedDate = ref<Date | [Date, Date] | null>(null);;
 
 
 const format = (selectedDate: Date | [Date, Date] | null): string => {

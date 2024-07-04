@@ -381,11 +381,8 @@
     const onDateSelect = (ev: Event, dayVal: ICalendarDay) => {
         if (!defaultedMultiDates.value.enabled) {
             checkStopPropagation(ev, defaultedConfig.value);
-            // console.log('Date selected:', dayVal.value);
-            emit('date-selected', dayVal.value)
             emit('select-date', dayVal);
         }
-        handleDateSelected?.(dayVal.value);
     };
 
     const onTpClick = (ev: Event) => {
